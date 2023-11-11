@@ -22,7 +22,7 @@ La interfaz de usuario se crea con React, y el servidor proporciona la lógica d
 
 2. **Cliente React:**
    - Creado con Create React App.
-   - Se comunica con el servidor a través de la API para obtener datos.
+   - Se comunica con el servidor a través de la API y `sockets.io` para obtener datos y facilitar la interactividad en tiempo real.
 
 ## Ejecución del Proyecto
 
