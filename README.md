@@ -1,36 +1,34 @@
-#Snake Game
-Este proyecto es una implementación del clásico juego Snake utilizando React para el cliente y Node.js para el servidor. La interfaz de usuario se crea con React, y el servidor proporciona la lógica del juego y gestiona las solicitudes del cliente.
+# Snake Game
 
-Características
-Cliente React:
+Este proyecto es una implementación del clásico juego Snake, desarrollado como parte del curso de Lenguajes de Programación en el Tecnológico de Costa Rica. Los autores de este proyecto son Aarón Piñar Mora y Duvan Espinoza.
 
-Interfaz de usuario interactiva y receptiva.
-Comunicación con el servidor a través de solicitudes API.
-Servidor Node.js:
+La interfaz de usuario se crea con React, y el servidor proporciona la lógica del juego y gestiona las solicitudes del cliente.
 
-Lógica del juego implementada en el servidor.
-API simple para la comunicación con el cliente.
-Configuración del Proyecto
-Servidor Node.js:
+## Características
 
-Utiliza Express para crear un servidor.
-Proporciona una API para enviar mensajes al cliente.
-Cliente React:
+- **Cliente React:**
+  - Interfaz de usuario interactiva y receptiva.
+  - Comunicación con el servidor a través de solicitudes API.
 
-Creado con Create React App.
-Se comunica con el servidor a través de la API para obtener datos.
-Ejecución del Proyecto
-Iniciar el servidor:
+- **Servidor Node.js:**
+  - Lógica del juego implementada en el servidor.
+  - API simple para la comunicación con el cliente.
 
-bash
-Copy code
-node server.js
-Iniciar el cliente:
+## Configuración del Proyecto
 
-bash
-Copy code
-cd client
-npm start
+1. **Servidor Node.js:**
+   - Utiliza Express para crear un servidor.
+   - Proporciona una API para enviar mensajes al cliente.
+
+2. **Cliente React:**
+   - Creado con Create React App.
+   - Se comunica con el servidor a través de la API para obtener datos.
+
+## Ejecución del Proyecto
+
+1. **Iniciar el servidor:**
+   ```bash
+   npm start
 Visita http://localhost:3000 en tu navegador para jugar al Snake.
 
 ¡Diviértete jugando y experimentando con el código!
