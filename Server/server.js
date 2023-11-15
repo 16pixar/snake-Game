@@ -8,6 +8,7 @@ const io = socketIO(server, {
     cors: { origin: '*' },
 });
 
+//Acá va la implementación y lo que despliega la terminal
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
