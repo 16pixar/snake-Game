@@ -4,7 +4,16 @@
   padding: 2rem;
   text-align: center;
 }
-
+.App {
+  padding: 100px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+}
 .logo {
   height: 6em;
   padding: 1.5em;

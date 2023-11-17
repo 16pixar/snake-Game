@@ -1,10 +1,10 @@
 import { Link, Outlet } from "react-router-dom";
-
+import './Layout.css';
 const Layout = () => {
   return (
-    <div>
+    <div> 
       <nav>
-        <ul>
+        <ul className="custom-list">
           <li>
             <Link to="/crearSala">Crear Sala</Link>
           </li>
@@ -19,7 +19,7 @@ const Layout = () => {
           </li>
         </ul>
       </nav>
-      <hr />
+      
       <Outlet />
     </div>
   );
