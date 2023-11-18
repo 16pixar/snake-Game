@@ -8,7 +8,7 @@ const io = socketIO(server, {
     cors: { origin: '*' },
 });
 
-//Acá va la implementación y lo que despliega la terminal
+// Acá va la implementación y lo que despliega la terminal
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
@@ -19,8 +19,15 @@ io.on('connection', (socket) => {
     // Por ejemplo, escuchar eventos 'disconnect', 'message', etc.
 });
 
+// Cambia el puerto en el que escucha el servidor
+// Debido a que ngrok usa links de manera temporal, estos datos
+// Se deben de cambiar
+
+//Hay que tener el servidor backend en ejecución 
+//antes de iniciar Ngrok para que pueda redirigir correctamente las solicitudes.
 const PORT = process.env.PORT || 3000;
+const NGROK_URL = 'https://08ad-152-231-128-130.ngrok-free.app'; // Reemplaza con la URL de Ngrok
 
 server.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server is running on ${NGROK_URL}`);
 });
