@@ -26,7 +26,7 @@ io.on('connection', (socket) => {
 //Hay que tener el servidor backend en ejecución 
 //antes de iniciar Ngrok para que pueda redirigir correctamente las solicitudes.
 const PORT = process.env.PORT || 3000;
-const NGROK_URL = 'https://08ad-152-231-128-130.ngrok-free.app'; // Reemplaza con la URL de Ngrok
+const NGROK_URL = 'https://a36d-152-231-128-130.ngrok-free.app'; // Reemplaza con la URL de Ngrok
 
 server.listen(PORT, () => {
     console.log(`Server is running on ${NGROK_URL}`);
