@@ -15,8 +15,26 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
     console.log('A user connected');
-    // Aquí puedes agregar lógica adicional para gestionar eventos de Socket.IO
-    // Por ejemplo, escuchar eventos 'disconnect', 'message', etc.
+
+    // Genera un ID único para el usuario
+    const userId = socket.id;
+
+    // Almacena información del usuario en el objeto 'users'
+    users[userId] = {
+        socket: socket,
+        // Puedes agregar más información sobre el usuario aquí
+    };
+
+    // Envía un mensaje al cliente recién conectado
+    socket.emit('message', 'Welcome to the chat!');
+
+    // Maneja eventos adicionales, por ejemplo, 'disconnect'
+    socket.on('disconnect', () => {
+        console.log('User disconnected');
+
+        // Elimina al usuario del objeto 'users' al desconectarse
+        delete users[userId];
+    });
 });
 
 // Cambia el puerto en el que escucha el servidor
