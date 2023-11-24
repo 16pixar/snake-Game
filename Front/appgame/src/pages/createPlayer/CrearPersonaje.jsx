@@ -1,6 +1,8 @@
 // src/components/CrearPersonaje.js
 import './CrearPersonaje.css';
 
+//enrutamiento 
+
 import React from 'react';
 import TextField from '@mui/material/TextField';
 //Sockets
@@ -13,21 +15,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //Servidor 
 const socket = io('http://localhost:3000');
- 
-
 const CrearPersonaje = () => {
-  const [isConnected, setIsConnected] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('#000000'); // Estado para almacenar el color seleccionado
-  const [nombre, setNombre] = useState(''); // Estado para almacenar el nombre ingresado
-  const [showGif, setShowGif] = useState(false); // Nuevo estado para controlar la visibilidad del gif
+const [isConnected, setIsConnected] = useState(false);
+const [selectedColor, setSelectedColor] = useState('#000000'); // Estado para almacenar el color seleccionado
+const [nombre, setNombre] = useState(''); // Estado para almacenar el nombre ingresado
+const [showGif, setShowGif] = useState(false); // Nuevo estado para controlar la visibilidad del gif
+const [idSala, setIdSala] = useState(''); // Nuevo estado para controlar la visibilidad del gif
 
-  useEffect(() => {
-    socket.on('connect', () => setIsConnected(true));
-    }, []);
+useEffect(() => {
+  socket.on('connect', () => setIsConnected(true));
+}, []);
   
-  //Color Picker 
-  const handleColorChange = (color) => {
-    setSelectedColor(color.hex);
+//Color Picker 
+const handleColorChange = (color) => {
+  setSelectedColor(color.hex);
   };
   //Accion del boton 
   const handleListoClick = () => {
@@ -37,6 +38,7 @@ const CrearPersonaje = () => {
     } else {
       console.log('Nombre:', nombre);
       console.log('Color seleccionado:', selectedColor);
+      console.log('Id de la sala:', idSala);
       setShowGif(true); // Muestra el gif
     }
   };
@@ -45,8 +47,10 @@ const CrearPersonaje = () => {
     <div className="crear-personaje-container">
       <h2>{isConnected ? 'Conectado' : 'No conectado'}</h2>
       <div className="crear-personaje-box">
-        <h2 className='tit'>Crear Personaje</h2>
-        <TextField label="Nombre" variant="outlined" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
+        <h2 className='tit'>Crear Sala</h2>
+        <TextField label="Id de la sala" variant="outlined" value={idSala} onChange={(e) => setIdSala(e.target.value)}/>
+        <br></br>
+        <TextField label="Nombre del Jugador" variant="outlined" value={nombre} onChange={(e) => setNombre(e.target.value)}/>
         <h2 >Seleccionar Color</h2> {/* Agregado */}
         <div className='selecColor' style={{ marginTop: '5px' }}>
           <ChromePicker color={selectedColor} onChange={handleColorChange} />
@@ -58,7 +62,7 @@ const CrearPersonaje = () => {
         {showGif && (
           <div className='desingConfirm'>
             <img src="camaraPen.gif" alt="GIF" />
-            <button onClick={handleListoClick}>Listo</button>
+            <button className='bt' onClick={handleListoClick}>Listo</button>
           </div>
         )}
 

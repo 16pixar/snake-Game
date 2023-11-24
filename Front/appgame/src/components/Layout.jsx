@@ -2,7 +2,8 @@ import { Link, Outlet } from "react-router-dom";
 import './Layout.css';
 const Layout = () => {
   return (
-    <div> 
+    <div className="App"> 
+      <h1>Snake Game<hr /></h1>
       <nav>
         <ul className="custom-list">
           <li>

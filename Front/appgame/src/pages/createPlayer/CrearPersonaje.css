@@ -24,7 +24,8 @@
 button{
   align-self: flex-end;
   margin-top: 40px;
-  color: #ffffff;
+  color: #ffffffe5;
+  background-color: black;
   border: none;
   padding: 10px 20px;
   cursor: pointer;

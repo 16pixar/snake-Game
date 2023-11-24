@@ -1,10 +1,11 @@
 // src/components/CrearSala.js
-import React from 'react';
+import "./CrearSala.css";
 
 const CrearSala = () => {
   return (
-    <div>
-      <h2>Crear Sala <del>Guapo</del></h2>
+    <div className="bgCrearSala">
+      <h2>Crear Sala <del>Guapao</del></h2>
+
     </div>
   );
 };
