@@ -1,10 +1,11 @@
 import { mod } from "./utils.js";
+let moving = false;
 
 export default function createGame() {
 	const state = {
 		players: {},
 		fruits: {},
-		maxFruits: 20,
+		maxFruits: 1,
 		maximumNumberOfWinners: 3,
 		screen: {
 			width: 25,
@@ -102,20 +103,25 @@ export default function createGame() {
 	}
 
 	function movePlayer(command) {
+
 		notifyAll(command);
 
 		const acceptedMoves = {
 			ArrowUp(player) {
 				player.y = mod(state.screen.height, player.y - 1);
+				console.log(player.y);
 			},
 			ArrowRight(player) {
 				player.x = mod(state.screen.width, player.x + 1);
+				console.log(player.x);
 			},
 			ArrowDown(player) {
 				player.y = mod(state.screen.height, player.y + 1);
+				console.log(player.y);
 			},
 			ArrowLeft(player) {
 				player.x = mod(state.screen.width, player.x - 1);
+				console.log(player.x);
 			},
 		};
 
@@ -124,9 +130,18 @@ export default function createGame() {
 		const player = state.players[playerId];
 		const moveFunction = acceptedMoves[keyPressed];
 
-		if (player && moveFunction) {
-			moveFunction(player);
+		if (player) {
+
+			if (moving) return;
+
 			checkForFruitCollision(playerId);
+			moveFunction(player);
+
+			moving = true;
+
+			setTimeout(() => {
+				moving = false;
+			}, 2);
 		}
 	}
 
