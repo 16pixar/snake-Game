@@ -12,6 +12,15 @@ const Layout = () => {
           <li>
             <Link to="/unirseSala">Unirse Sala</Link>
           </li>
+          <li>
+            <Link to="/crearPersonaje">Crear Personaje</Link>
+          </li>
+          <li>
+            <Link to="/TraditionalGame">Juego Tradicional</Link>
+          </li>
+          <li>
+            <Link to="/estadisticas">Estadisticas</Link>
+          </li>
          
         </ul>
       </nav>

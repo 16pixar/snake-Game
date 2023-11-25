@@ -7,32 +7,11 @@
 	--accent: #837599;
 	--border-color: #808080;
 
-	--fruit: red;
+	--fruit: rgb(255, 0, 212);
 	--player: #00ff00;
 	--opponents: #ffffff;
 }
 
-
-
-
-body {
-	min-width: 375px;
-	min-height: 667px;
-	background-color: var(--background);
-	height: 100vh;
-	width: 100vw;
-	overflow: hidden;
-	font-family: "Cinzel", serif;
-}
-
-body {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	padding-top: 15vh;
-	text-align: center;
-}
 
 header {
 	display: flex;
@@ -150,6 +129,19 @@ header > h1 {
 	background-color: white;
 	border: 1px solid #ccc; 
 	border-radius: 8px; 
+	
+}
+.estado {
+	display: flex;
+	position: absolute;
+	align-items: center;
+	justify-content: center;
+	top: 0%;
+	left: 83%;
+
+	background-color: white;
+	width: 15%;
+	border-radius: 8px;
 }
 
 @media screen and (min-width: 1024px) {

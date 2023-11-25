@@ -6,6 +6,8 @@ import createGame from "../../../../server/public/game.js";
 import renderScreen, { setupScreen } from "../../../../server/public/render-screen.js";
 import createKeyboardListener from "../../../../server/public/keyboard-listener.js";
 
+
+
 const playerName = getNickName();
 const socket = io('http://localhost:3000',{
     query: {
@@ -13,7 +15,9 @@ const socket = io('http://localhost:3000',{
     },
   });
 
+
 function App() {
+  
   const [isConnected, setIsConnected] = useState(false)
   const game = createGame();
   const keyboardListener = createKeyboardListener(document);
@@ -21,6 +25,7 @@ function App() {
   
 
   useEffect(() => {
+    
     socket.on('connect', () => {
       const playerId = socket.id;
 
@@ -91,8 +96,8 @@ function App() {
       <div className="game-container">
         <canvas id="screen" width="10" height="10"></canvas>
       </div>
-      <h1>Vite + React</h1>
-      <h2>{isConnected?`Conectado ${playerName}`:"No conectado"}</h2>
+
+      <div className='estado'>{isConnected?`Conectado: ${playerName}`:"No conectado:Recargue Pagína"}</div>
 
       
     </>

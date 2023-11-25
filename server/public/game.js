@@ -109,19 +109,19 @@ export default function createGame() {
 		const acceptedMoves = {
 			ArrowUp(player) {
 				player.y = mod(state.screen.height, player.y - 1);
-				console.log(player.y);
+	
 			},
 			ArrowRight(player) {
 				player.x = mod(state.screen.width, player.x + 1);
-				console.log(player.x);
+		
 			},
 			ArrowDown(player) {
 				player.y = mod(state.screen.height, player.y + 1);
-				console.log(player.y);
+			
 			},
 			ArrowLeft(player) {
 				player.x = mod(state.screen.width, player.x - 1);
-				console.log(player.x);
+	
 			},
 		};
 
@@ -150,10 +150,9 @@ export default function createGame() {
 
 		for (const fruitId in state.fruits) {
 			const fruit = state.fruits[fruitId];
-			// console.log(`Checking ${playerId} score ${player.score} and ${fruitId}`)
+
 
 			if (player.x === fruit.x && player.y === fruit.y) {
-				// console.log(`COLLISION between ${playerId} and ${fruitId}`)
 				removeFruit({ fruitId: fruitId });
 				player.score += 1;
 			}
