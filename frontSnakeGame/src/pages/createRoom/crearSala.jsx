@@ -5,10 +5,11 @@ import "./room.css";
 import createGame from "../../../../server/public/game.js";
 import renderScreen, { setupScreen } from "../../../../server/public/render-screen.js";
 import createKeyboardListener from "../../../../server/public/keyboard-listener.js";
-
-
+//server
+const serverNode = 'https://73ff-186-159-181-247.ngrok-free.app'
 
 const playerName = getNickName();
+// se declara el socket con el nombre del jugador y el  puerto del servidor
 const socket = io('http://localhost:3000',{
     query: {
       userName: playerName,
@@ -17,15 +18,15 @@ const socket = io('http://localhost:3000',{
 
 
 function App() {
-  
+  //verifica el estado del socket desde el servidor para mostrarlo en el front 
   const [isConnected, setIsConnected] = useState(false)
   const game = createGame();
   const keyboardListener = createKeyboardListener(document);
 
   
-
+  //estados en uso se toma en cuenta el estado del socket para mostrarlo en el front
   useEffect(() => {
-    
+    // mopdulos en base a la conexion del socket con el servidor 
     socket.on('connect', () => {
       const playerId = socket.id;
 
@@ -40,11 +41,7 @@ function App() {
       console.log("Unsubscribing All");
 				keyboardListener.unsubscribeAll();
 				location.reload();
-				/*
-				if (confirm("You have been disconnected.\nPress OK to try to reconnect.")) {
-					location.reload();
-				}
-				*/
+				
       setIsConnected(false)
     })
 
@@ -53,10 +50,22 @@ function App() {
       game.setState(state);
 
       keyboardListener.registerPlayerId(playerId);
+
+      console.log("Subscribing to KeyboardListener");
+
       keyboardListener.subscribe(game.movePlayer);
       keyboardListener.subscribe((command) => {
         socket.emit("move-player", command);
       });
+    });
+
+    
+    socket.on("play", (command) => {
+      const playerId = socket.id;
+
+      if (playerId !== command.playerId) {
+        game.play(command);
+      }
     });
 
     socket.on("add-player", (command) => {
@@ -90,6 +99,7 @@ function App() {
   return (
     
     <>
+      
       <div className="score-container">
         <table id="score-table"></table>
       </div>
@@ -99,10 +109,13 @@ function App() {
 
       <div className='estado'>{isConnected?`Conectado: ${playerName}`:"No conectado:Recargue Pagína"}</div>
 
-      
     </>
   );
 }
+//funcion para obtener el nombre del jugador
+//E: no recibe nada
+//S: retorna el nombre del jugador
+//R: no recibe parametros
 function getNickName() {
   const readNickName = sessionStorage.getItem("NickName") || prompt("Enter your nickname:");
 

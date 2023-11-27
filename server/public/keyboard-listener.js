@@ -1,3 +1,5 @@
+// Sirve para escuchar los eventos de teclado y notificar a los observadores
+// Aqui van las funciones encargadas de configuracion del teclado para poder jugar en el navegador
 export default function createInputListener(document) {
   const state = {
     observers: [],
@@ -33,7 +35,7 @@ export default function createInputListener(document) {
     touchStartY = event.touches[0].clientY;
     touchStartX = event.touches[0].clientX;
   }
-
+  
   function handleTouchEnd(event) {
     const touchEndY = event.changedTouches[0].clientY;
     const touchEndX = event.changedTouches[0].clientX;
@@ -42,21 +44,15 @@ export default function createInputListener(document) {
     const swipeDistanceX = touchEndX - touchStartX;
 
     if (Math.abs(swipeDistanceY) > Math.abs(swipeDistanceX)) {
-      // Vertical swipe
       if (swipeDistanceY < 0) {
-        // Swipe up
         handleKeydown("ArrowUp")
       } else {
-        // Swipe down
         handleKeydown("ArrowDown")
       }
     } else {
-      // Horizontal swipe
       if (swipeDistanceX < 0) {
-        // Swipe left
         handleKeydown("ArrowLeft")
       } else {
-        // Swipe right
         handleKeydown("ArrowRight")
       }
     }
@@ -76,6 +72,7 @@ export default function createInputListener(document) {
     const command = createMoveCommand(keyPressed);
 
     notifyAll(command);
+    
   }
 
   return {

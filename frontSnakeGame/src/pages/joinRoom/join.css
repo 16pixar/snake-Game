@@ -1,0 +1,13 @@
+.conatiner {
+  
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  height: 200%;
+  width: 200%;  
+  background-color: white;
+  border-radius: 8px;
+}

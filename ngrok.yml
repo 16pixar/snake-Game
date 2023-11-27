@@ -1,0 +1,11 @@
+version: "2"
+authtoken: 2XxN2csYzHZhstLgrWaJifsEFg8_3M6FAnVrxG7QejJLmx5Pi
+
+tunnels:
+  app3000:
+    proto: http
+    addr: 3000
+
+  app5173:
+    proto: tcp
+    addr: 5173

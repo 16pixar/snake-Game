@@ -3,12 +3,13 @@ import http from 'http';
 import * as socketio from 'socket.io';
 import cors from 'cors';
 import createGame from './public/game.js';
-
+import fs from 'fs/promises';
 const app = express();
 const server = http.createServer(app);
 const io = new socketio.Server(server, {
     cors: {
         origin: '*',
+		methods: ["GET", "POST"],		
     }   
 });
 
@@ -32,7 +33,7 @@ io.on("connection", (socket) => {
 	game.addPlayer({ playerId: playerId, playerName: playerName });
 
 	socket.emit("setup", game.state);
-
+	
 	socket.on("disconnect", () => {
 		game.removePlayer({ playerId: playerId });
 		console.log(`> Player disconnected: ${playerName}`);
@@ -45,10 +46,6 @@ io.on("connection", (socket) => {
 		game.movePlayer(command);
 	});
 });
-
-
-
-
 
 
 const PORT = process.env.PORT || 3000;
@@ -68,3 +65,16 @@ io.on('connection', (socket) => {
     console.log('Usuario conectado');
     // Aquí puedes agregar lógica para manejar eventos de socket
 });*/
+
+//json 
+// En el servidor
+app.post('/Estadisticas', (req, res) => {
+	const lista = req.body.lista; // Suponiendo que la lista viene en el cuerpo de la solicitud
+	console.log('Guardando lista:', lista);
+  
+	// Lógica para guardar la lista en un archivo, similar a tu código actual
+	// ...
+  
+	res.send('Lista guardada con éxito');
+  });
+  

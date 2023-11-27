@@ -1,16 +1,45 @@
 
+
 :root {
-	background-image: url("bg.jpg");
+	--text: #ffffff;
+	--background: #020303;
 	--primary: #00ff00;
-	--secondary: #24261c;
+	--secondary: #201c26;
 	--accent: #837599;
 	--border-color: #808080;
 
-	--fruit: rgb(255, 0, 212);
+	--fruit: red;
 	--player: #00ff00;
 	--opponents: #ffffff;
 }
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	color: var(--text);
+	/*border: 1px solid #8a2be2;*/
+}
+
+html,
+body {
+	min-width: 375px;
+	min-height: 667px;
+	background-color: var(--background);
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	font-family: "Cinzel", serif;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-top: 15vh;
+	text-align: center;
+}
 
 header {
 	display: flex;
@@ -40,46 +69,30 @@ header > h1 {
 	image-rendering: pixelated;
 	image-rendering: crisp-edges;
 	image-rendering: -moz-crisp-edges;
-	width: 600px;
-	height: 600px;
-	-webkit-box-shadow: 0px 4px 17px 0px rgba(20, 20, 20, 0.911);
-	
+	width: 300px;
+	height: 300px;
+	-webkit-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+	-moz-box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
+	box-shadow: 0px 4px 17px 0px rgba(0, 0, 0, 0.19);
 	margin-bottom: 20px;
 	margin-left: 20px;
 	margin-right: 20px;
 	display: inline-block;
 	vertical-align: top;
-	background-color: rgb(255, 255, 255);
 }
 
 #score-table {
+	vertical-align: top;
 	display: inline-block;
 	margin-bottom: 7vh;
 	max-height: 200px;
 	font-family: "Cinzel", serif;
-
-    position: center;
 }
 
 #score-table #scoretableTitle {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 8px;
-	padding-right: 20px;
 	font-size: 0.8rem;
-}
-.score-container {
-	position: absolute;
-    top: 0%;   
-    left: 0%;  
-    margin: 1%;
-
-	width: 220px;
-	height: 140px;
-	
-	background-color: white;
-	border: 2px solid #ccc; 
-	border-radius: 8px; 
-	
 }
 
 #score-table #scoretablePoints {
@@ -110,37 +123,6 @@ header > h1 {
 #score-table .current-player .socket-id,
 #score-table .current-player .score-value {
 	color: #bdaa27;
-}
-
-.game-container {
-	position: absolute;
-	top: 8%;   
-	left: 30%;  
-
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-
-	height: 690px;
-	width: 690px;
-
-	background-color: white;
-	border: 1px solid #ccc; 
-	border-radius: 8px; 
-	
-}
-.estado {
-	display: flex;
-	position: absolute;
-	align-items: center;
-	justify-content: center;
-	top: 0%;
-	left: 83%;
-
-	background-color: white;
-	width: 15%;
-	border-radius: 8px;
 }
 
 @media screen and (min-width: 1024px) {
